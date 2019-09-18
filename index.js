@@ -11,13 +11,13 @@ let last_timestamp;
 canvas.width = window.innerWidth;
 canvas.height = window.innerHeight; 
 
-requestAnimationFrame(gameLoop);
-
 window.addEventListener("resize", () => {
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight; 
     windowSize = {width: window.innerWidth, height: window.innerHeight};
 });
+
+requestAnimationFrame(gameLoop);
 
 function gameLoop(timestamp) {
     requestAnimationFrame(gameLoop);
@@ -33,7 +33,7 @@ function updatePhysics(dt) {
     position.y += speed * dt * direction.y;
 
     //not perfect but good enough
-    if(position.x <= radius && direction.x == -1) {
+    if(position.x <= radius && direction.x === -1) {
         direction.x = 1;
     }
     if(position.x >= (windowSize.width - radius) && direction.x === 1) {
